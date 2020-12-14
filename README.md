@@ -4,9 +4,8 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/Pud-dy/ProxCore)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![GitHub followers](https://img.shields.io/github/followers/Pud-dy?style=social)
-
 <br />
-
+[![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://github.com/Pud-dy)
   <h3 align="center">ProxCore</h3>
 
   <p align="center">
