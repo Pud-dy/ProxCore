@@ -1,4 +1,9 @@
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/Pud-dy/ProxCore)
+![GitHub all releases](https://img.shields.io/github/downloads/Pud-dy/ProxCore/total)
+![GitHub issues](https://img.shields.io/github/issues/Pud-dy/ProxCore)
+![GitHub last commit](https://img.shields.io/github/last-commit/Pud-dy/ProxCore)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![GitHub followers](https://img.shields.io/github/followers/Pud-dy?style=social)
 
 <br />
 
