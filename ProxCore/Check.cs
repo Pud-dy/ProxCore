@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Threading.Tasks;
+using System.Web.Script.Serialization;
+
 namespace ProxCore
 {
-    public class Check
+    public class Check // Checking module for http/s,socks-4/5 - coming soon
     {
 
-        public static (bool, int) http(string ip, int port, int timeout = 3000, bool getresponsetime = false, string useragent = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.2 Safari/537.36")
+        public static (bool, int, string) http(string ip, int port, int timeout = 3000, string useragent = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.2 Safari/537.36")
         {
             try
             {
@@ -22,11 +21,20 @@ namespace ProxCore
                 request.Timeout = timeout;
                 request.GetResponse();
                 sw.Stop();
-                return (true, Convert.ToInt32(sw.ElapsedMilliseconds));
+                int Timeout = sw.Elapsed.Milliseconds;
+                Responses.responsetime = Timeout;
+                WebClient wbc = new WebClient();
+                string jsondata = wbc.DownloadString("https://freegeoip.live/json/"+ip);
+                //Console.WriteLine(jsondata);
+                var serializer = new JavaScriptSerializer();
+                dynamic result = serializer.DeserializeObject(jsondata);
+                var ccode = result["country_code"];
+                //Console.WriteLine(UserId);
+                return (true,Timeout,ccode);
             }
             catch (Exception e)
             {
-                return (false, 0);
+                return (false,0,"Failed");
             }
         }
         public static bool sock4(string ip, int port, int timeout = 3000) {
