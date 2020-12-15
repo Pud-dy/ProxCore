@@ -18,23 +18,31 @@
 using ProxCore;
 
 //Single check
-if (Check.http(127.0.0.1,80,4000)){ // IP, Port, Timeout, Useragent
+if (Check.http(127.0.0.1,80,4000)).Item1{ // IP, Port, Timeout, Useragent
   Console.WriteLine("Working Proxy");
 } else {
   Console.Writeline("Failed Proxy");
 }
 
 
-// Or use with Parallel
+// Or use with Parallel Foreach
 Parallel.ForEach(proxy, new ParallelOptions { MaxDegreeOfParallelism = 5 }, prox =>
         {
         string[] prox = proxy.Split(':');
-           if (Check.http(prox[0],Convert.ToInt32(prox[1]),4000)){ // IP, Port, Timeout, Useragent
+           if (Check.http(prox[0],Convert.ToInt32(prox[1]),4000).Item1){ // IP, Port, Timeout, Useragent
                Console.WriteLine("Working proxy : " + prox);
             } else {
                Console.Writeline("Failed Proxy : " + prox);
             }
        });
+       
+/* Other things being
+Getting just Response time & country code */
+
+            var Proxy_ = Check.http(127.0.0.1, 80, 3000);
+            bool Wokring = Proxy_.Item1; // Returns True/False if the proxy is working.
+            int responseTime = Proxy_.Item2; // Returns Response time of said proxy.
+            string Country_Code = Proxy_.Item3; // Returns country code of said proxy.
 ```
 
 ## Contact
